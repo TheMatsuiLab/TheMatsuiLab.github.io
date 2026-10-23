@@ -27,3 +27,4 @@ nav a.active{color:var(--accent);font-weight:700;border-bottom:2px solid var(--a
 .page-title{padding:48px 24px 8px;max-width:900px;margin:0 auto}
 .page-title h1{margin:0;font-size:clamp(1.8rem,4vw,2.6rem)}
 .page-title+section{padding-top:24px}
+.pi img.photo{width:140px;height:140px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line)}
