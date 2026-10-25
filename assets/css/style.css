@@ -28,3 +28,6 @@ nav a.active{color:var(--accent);font-weight:700;border-bottom:2px solid var(--a
 .page-title h1{margin:0;font-size:clamp(1.8rem,4vw,2.6rem)}
 .page-title+section{padding-top:24px}
 .pi img.photo{width:100px;height:100px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line)}
+.project{margin-top:56px}
+.project h2{border-bottom:1px solid var(--line);padding-bottom:8px}
+.project h3{font-size:1.1rem;font-weight:600;line-height:1.4;margin:0 0 16px}
