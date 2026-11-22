@@ -2,6 +2,23 @@
 (function () {
   document.documentElement.classList.remove('no-js');
 
+  // Light / dark switch (the starting theme is set in each page's <head>)
+  var themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn) {
+    var label = function () {
+      var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to night mode');
+      themeBtn.setAttribute('title', dark ? 'Light mode' : 'Night mode');
+    };
+    label();
+    themeBtn.addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      label();
+    });
+  }
+
   // Mobile menu
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');

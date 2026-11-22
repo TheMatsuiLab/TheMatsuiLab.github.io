@@ -29,7 +29,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #100c18;
     --surface: #18131f;
     --surface-2: #211a2c;
@@ -46,6 +46,23 @@
     --night-2: #241349;
     color-scheme: dark;
   }
+}
+:root[data-theme="dark"] {
+  --paper: #100c18;
+  --surface: #18131f;
+  --surface-2: #211a2c;
+  --ink: #f4f1f9;
+  --text: #dcd7e5;
+  --muted: #a69fb4;
+  --line: #2b2438;
+  --line-strong: #40364f;
+  --violet: #c3aaf3;
+  --violet-ink: #1b1030;
+  --violet-soft: #251a3d;
+  --gold: #f3c14b;
+  --night: #0b0713;
+  --night-2: #241349;
+  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -114,10 +131,27 @@ sub, sup { line-height: 0; }
 .site-nav a[aria-current="page"]::after {
   content: ""; position: absolute; left: 14px; right: 14px; bottom: 3px; height: 2px; background: var(--violet); border-radius: 2px;
 }
-@media (prefers-color-scheme: dark) { .bm-a { fill: #7a4fd0; } .bm-b { fill: #9c78e6; } .bm-c { fill: #d5c5fa; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bm-a { fill: #7a4fd0; } :root:not([data-theme="light"]) .bm-b { fill: #9c78e6; } :root:not([data-theme="light"]) .bm-c { fill: #d5c5fa; } }
+:root[data-theme="dark"] .bm-a { fill: #7a4fd0; } :root[data-theme="dark"] .bm-b { fill: #9c78e6; } :root[data-theme="dark"] .bm-c { fill: #d5c5fa; }
+
+/* Light / dark switch */
+.brand { order: 1; }
+.site-nav { order: 2; margin-left: auto; }
+.theme-toggle {
+  order: 3; display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 40px; height: 40px; border: 1px solid var(--line-strong); border-radius: 8px;
+  background: var(--surface); color: var(--ink); cursor: pointer; transition: border-color .15s, color .15s;
+}
+.theme-toggle:hover { border-color: var(--violet); color: var(--violet); }
+.theme-toggle svg { width: 19px; height: 19px; }
+.theme-toggle .sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .moon { display: none; }
+.nav-toggle { order: 4; }
 
 @media (max-width: 820px) {
   .nav-toggle { display: inline-flex; }
+  .theme-toggle { margin-left: auto; }
   .site-nav { display: none; position: absolute; left: 0; right: 0; top: 100%;
     background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 18px 30px rgba(20, 14, 34, .12); }
   .site-nav.open { display: block; }
